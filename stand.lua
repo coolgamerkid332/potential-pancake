@@ -16,16 +16,16 @@ getgenv().Owner = "Craze_EchoYT"
 
 getgenv().Configuration = {
 ['Fps'] = 35, --Fps cap [if supported]
-['Msg'] = 'Yare Yare Daze.', --When You Say [/e msg] It Makes All The Alts Say That Message
+['Msg'] = 'is ts aura </3', --When You Say [/e msg] It Makes All The Alts Say That Message
 ['CrewID'] = 32570691, --Must join group
 ['Attack'] = 'Heavy', --[Heavy | Light] Heavy = Super Punch Light = Spam Punch
 ['TPMode'] = 'Cart', --[Knock | Cart] --Teleport mode
 ['GunMode'] = 'Rifle', --[LMG | Rifle | Aug] --Self explain
 ['FlyMode'] = 'Heaven', --[Glide | FlyV1 | FlyV2 | Hover | Heaven ]
-['Position'] = 'Back', --[Back | Left | Right | Mid | UpMid | UpLeft | UpLeft | Walk ]
+['Position'] = 'Left', --[Back | Left | Right | Mid | UpMid | UpLeft | UpLeft | Walk ]
 ['Resolver'] = false, --[true | false] Turn On Or Off Resolver If Someone Using Anti Lock [This only applied to attack only for guns it's already have resolver]
 ['ChatCmds'] = true, --[true | false] if true stand talks to you
-['AutoMask'] = true, --[true | false] Auto Buy Mask When The Stand Respawn
+['AutoMask'] = false, --[true | false] Auto Buy Mask When The Stand Respawn
 ['MaskMode'] = 'Riot', --[Surgeon | Paintball | Skull | Pumpkin | Hockey | Ninja | Riot | Breathing] The Stand Will Buy The Mask You Selected
 ['AntiStomp'] = true, --[true | false] The Stand Will Cannot Be Stomped Or Grabbed
 ['StandMode'] = 'Star Platinum : OverHeaven', --[Star Platinum : OverHeaven | Star Platinum: The World | Star Platinum, Za Warudo! | TheWorld | Cmoon | King Crimson | Killer Queen | MIH | D4C]
