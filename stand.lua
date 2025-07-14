@@ -15,7 +15,7 @@ After  --> getgenv().Owner = "XK5NG"
 getgenv().Owner = "Craze_EchoYT"
 
 getgenv().Configuration = {
-['Fps'] = 35, --Fps cap [if supported]
+['Fps'] = 60, --Fps cap [if supported]
 ['Msg'] = 'is ts aura </3', --When You Say [/e msg] It Makes All The Alts Say That Message
 ['CrewID'] = 32570691, --Must join group
 ['Attack'] = 'Heavy', --[Heavy | Light] Heavy = Super Punch Light = Spam Punch
