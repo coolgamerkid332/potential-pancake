@@ -12,7 +12,7 @@ After  --> getgenv().Owner = "XK5NG"
 
 ^^ --> This is just the example don't put the username herez]]
 
-getgenv().Owner = "FlashL3g3nd18"
+getgenv().Owner = "JellyVen0mOmega"
 
 getgenv().Configuration = {
 ['Fps'] = 60, --Fps cap [if supported]
