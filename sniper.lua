@@ -12,7 +12,7 @@ After  --> getgenv().Owner = "XK5NG"
 
 ^^ --> This is just the example don't put the username herez]]
 
-getgenv().Owner = "JellyVen0mOmega"
+getgenv().Owner = "Gam3rCod32005"
 
 getgenv().Whitelist = { --Endless bot whitelist
     1,
