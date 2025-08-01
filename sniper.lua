@@ -28,7 +28,7 @@ getgenv().Configuration = {
     ['Multiplier'] = 3, --Multiplier, multiplies the prediction value; dont change if you dont know what this does
 
     ['StompHeight'] = 5, --Stomp Y offset, self explainatory; affects stomp Z X offset
-    ['RandomStompOffset'] = 5, --Stomp Z X offset, 0 = nil or disable; recomended for alts; '5' value is max for dh
+    ['RandomStompOffset'] = 3, --Stomp Z X offset, 0 = nil or disable; recomended for alts; '5' value is max for dh
 
     ['SpareAmmo'] = 8, --How much ammo til start buying
     ['ForceAmmo'] = 4, --How much ammo to force buying
