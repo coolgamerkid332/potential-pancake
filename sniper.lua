@@ -22,7 +22,7 @@ getgenv().Whitelist = { --Endless bot whitelist
 }
 
 getgenv().Configuration = {
-    ['Guns'] = {"Rifle", "Flintlock"}, --Default gun, recomended
+    ['Guns'] = {"Rifle", "Flintlock", "AUG", "Double-Barrel SG"}, --Default gun, recomended
 
     ['Prediction'] = 1, --Prediction, self explainatory
     ['Multiplier'] = 3, --Multiplier, multiplies the prediction value; dont change if you dont know what this does
