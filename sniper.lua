@@ -12,7 +12,7 @@ After  --> getgenv().Owner = "XK5NG"
 
 ^^ --> This is just the example don't put the username here]]
 
-getgenv().Owner = "VelocityMover"
+getgenv().Owner = "CynicalCl0uds"
 
 getgenv().Configuration = {
     ['Guns'] = {"Rifle", "Flintlock"}, --Default gun, recomended
