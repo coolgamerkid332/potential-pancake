@@ -35,7 +35,7 @@ getgenv().Configuration = {
     ['StompHeight'] = 4.4, --Stomp Y offset, self explainatory; affects stomp Z X offset
     ['RandomStompOffset'] = 1, --Stomp Z X offset, 0 = nil or disable; recomended for alts; '1' value is max for dh
 
-    ['TimeBeforeVoid'] = 1.4, --Seconds before voiding with bring
+    ['TimeBeforeVoid'] = 3.35, --Seconds before voiding with bring
 
     ["TimesAmmo"] = 5, --How much ammo will it buy
     ['SpareAmmo'] = 3, --How much ammo til start buying
