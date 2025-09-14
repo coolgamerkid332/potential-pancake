@@ -42,7 +42,7 @@ getgenv().Configuration = {
     ['ForceAmmo'] = 1, --How much ammo to force buying
 
     ['InstantRespawn'] = false, --Instantly respawn you
-    ['Cooldown'] = 500, --Seconds to respawn
+    ['Cooldown'] = 120, --Seconds to respawn
 
     ['DoubleBarrelTime'] = 0.11, --Double-Barrel time to shoot (must have DoubleBarrel to true)
 
