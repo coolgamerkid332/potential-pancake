@@ -42,7 +42,7 @@ getgenv().Configuration = {
     ['ForceAmmo'] = 1, --How much ammo to force buying
 
     ['InstantRespawn'] = false, --Instantly respawn you
-    ['Cooldown'] = 120, --Seconds to respawn
+    ['Cooldown'] = 9e9, --Seconds to respawn
 
     ['DoubleBarrelTime'] = 0.11, --Double-Barrel time to shoot (must have DoubleBarrel to true)
 
@@ -55,7 +55,7 @@ getgenv().Configuration = {
     ['CrewID'] = 32570691, --Crew id, preferable to be in both same crew alt/main
     ['VoidView'] = true, --Puts urs camera to void, gradually increasing ur fps
     ['AntiStomp'] = true, --Self explainatory
-    ['HideScreen'] = false, --Boost fps and lowered cpu consumption, recomended
+    ['HideScreen'] = true, --Boost fps and lowered cpu consumption, recomended
     ['CustomPrefix'] = "!", --Bot prefix
-    ['Fpscap'] = 200 --Capped fps
+    ['Fpscap'] = 120 --Capped fps
 }loadstring(game:HttpGet("https://xk5ng.github.io/Sniper-Bot-Rewrite"))()
