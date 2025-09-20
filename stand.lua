@@ -12,29 +12,29 @@ After  --> getgenv().Owner = "XK5NG"
 
 ^^ --> This is just the example don't put the username herez]]
 
-getgenv().Owner = "JulianByteLava"
+getgenv().Owner = "DancerR0gueLight"
 
 getgenv().Configuration = {
-['Fps'] = 60, --Fps cap [if supported]
-['Msg'] = 'is ts aura </3', --When You Say [/e msg] It Makes All The Alts Say That Message
+['Fps'] = 45, --Fps cap [if supported]
+['Msg'] = 'Yare Yare Daze.', --When You Say [/e msg] It Makes All The Alts Say That Message
 ['CrewID'] = 32570691, --Must join group
 ['Attack'] = 'Heavy', --[Heavy | Light] Heavy = Super Punch Light = Spam Punch
 ['TPMode'] = 'Cart', --[Knock | Cart] --Teleport mode
 ['GunMode'] = 'Rifle', --[LMG | Rifle | Aug] --Self explain
-['FlyMode'] = 'Heaven', --[Glide | FlyV1 | FlyV2 | Hover | Heaven ]
-['Position'] = 'Left', --[Back | Left | Right | Mid | UpMid | UpLeft | UpLeft | Walk ]
+['FlyMode'] = 'Glide', --[Glide | FlyV1 | FlyV2 | Hover | Heaven ]
+['Position'] = 'Back', --[Back | Left | Right | Mid | UpMid | UpLeft | UpLeft | Walk ]
 ['Resolver'] = false, --[true | false] Turn On Or Off Resolver If Someone Using Anti Lock [This only applied to attack only for guns it's already have resolver]
 ['ChatCmds'] = true, --[true | false] if true stand talks to you
-['AutoMask'] = false, --[true | false] Auto Buy Mask When The Stand Respawn
-['MaskMode'] = 'Surgeon', --[Surgeon | Paintball | Skull | Pumpkin | Hockey | Ninja | Riot | Breathing] The Stand Will Buy The Mask You Selected
+['AutoMask'] = true, --[true | false] Auto Buy Mask When The Stand Respawn
+['MaskMode'] = 'Riot', --[Surgeon | Paintball | Skull | Pumpkin | Hockey | Ninja | Riot | Breathing] The Stand Will Buy The Mask You Selected
 ['AntiStomp'] = true, --[true | false] The Stand Will Cannot Be Stomped Or Grabbed
 ['StandMode'] = 'Star Platinum : OverHeaven', --[Star Platinum : OverHeaven | Star Platinum: The World | Star Platinum, Za Warudo! | TheWorld | Cmoon | King Crimson | Killer Queen | MIH | D4C]
 ['Smoothing'] = false, --[true | false] if true stand will follow you smoothly
 ['AttackMode'] = 'Sky', --[Sky | Under] If [Sky] The Stand Will Attack Infront Of Target And If [Under] The Stand Will Attack In Underground
-['CustomName'] = 'Twin', --Custom Name Text Default Is [Master] Example Of it 'Im Here, Master'
+['CustomName'] = 'Owner', --Custom Name Text Default Is [Master] Example Of it 'Im Here, Master'
 ['Hidescreen'] = false, --[true | false] If you set it to true you will see white blank screen [Save up gpu usage]
 ['SummonPoses'] = 'Pose3', --[false | Pose1 | Pose2 | Pose3]
-['LowGraphics'] = true, --[true | false] Turns graphics down so your stand doesnt lag too much
+['LowGraphics'] = false, --[true | false] Turns graphics down so your stand doesnt lag too much
 ['CustomPrefix'] = '.', --[ ! | / | . | ? | > | < | $ | ; | : ] Custom target prefix
 ['CustomSummon'] = 'Summon!', --Custom [Summon!] Text
 ['AutoPrediction'] = false, --[true | false] Turn On Or Off Auto Prediction 
