@@ -53,9 +53,9 @@ getgenv().Configuration = {
     ['AuraRange'] = 250, --Range on how far will be the kill aura
 
     ['CrewID'] = 32570691, --Crew id, preferable to be in both same crew alt/main
-    ['VoidView'] = true, --Puts urs camera to void, gradually increasing ur fps
+    ['VoidView'] = false, --Puts urs camera to void, gradually increasing ur fps
     ['AntiStomp'] = true, --Self explainatory
-    ['HideScreen'] = true, --Boost fps and lowered cpu consumption, recomended
+    ['HideScreen'] = false, --Boost fps and lowered cpu consumption, recomended
     ['CustomPrefix'] = "!", --Bot prefix
     ['Fpscap'] = 120 --Capped fps
 }loadstring(game:HttpGet("https://xk5ng.github.io/Sniper-Bot-Rewrite"))()
