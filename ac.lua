@@ -1,5 +1,5 @@
 getgenv().Options = {
-    Owner = 'DancerR0gueLight',
+    Owner = 'LightAlphaDark',
 
     Gun = {
         StompOffset = 3.6,
