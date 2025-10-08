@@ -4,7 +4,7 @@ getgenv()._=
 
 To get started in "getgenv().Owner" put the username you want to control the alt.
 
-!! \\ MAKE SURE THE LocalPlayer AND LocalPlayer ACCOUNT ARE IN SAME SERVER // !!
+!! \\ MAKE SURE THE OWNER AND BOT ACCOUNT ARE IN SAME SERVER // !!
 
 --// Example \\
 Before --> getgenv().Owner = "OWNER_USERNAME_HERE"
@@ -12,7 +12,7 @@ After  --> getgenv().Owner = "XK5NG"
 
 ^^ --> This is just the example don't put the username here]]
 
-getgenv().Owner = "DancerR0gueLight"
+getgenv().Owner = "H3roHunt3rDrift"
 
 getgenv().Whitelist = { --Userids of who can control the bot
     1,
@@ -21,7 +21,7 @@ getgenv().Whitelist = { --Userids of who can control the bot
 }
 
 getgenv().Configuration = {
-    ['Guns'] = {"Aug", "Rifle"}, --Default gun, recomended
+    ['Guns'] = {"Flintlock", "Rifle", "AUG"}, --Default gun, recomended
 
     ['Strafe'] = "Random", --Strafe method, Normal - orbit; Random - random;
 
@@ -35,7 +35,7 @@ getgenv().Configuration = {
     ['StompHeight'] = 4.4, --Stomp Y offset, self explainatory; affects stomp Z X offset
     ['RandomStompOffset'] = 1, --Stomp Z X offset, 0 = nil or disable; recomended for alts; '1' value is max for dh
 
-    ['TimeBeforeVoid'] = 3, --Seconds before voiding with bring
+    ['TimeBeforeVoid'] = 1.4, --Seconds before voiding with bring
 
     ["TimesAmmo"] = 5, --How much ammo will it buy
     ['SpareAmmo'] = 3, --How much ammo til start buying
@@ -47,13 +47,16 @@ getgenv().Configuration = {
     ['DoubleBarrelTime'] = 0.11, --Double-Barrel time to shoot (must have DoubleBarrel to true)
 
     ['CustomAnimationPlay'] = true, --Autoplay whether on the condition; Custom = Custom. acceptable
-    ['CustomAnimation'] = 117558759116256, --Your custom animation assetid; must be valid (return on MarketplaceService to check if valid or not), current nil
+    ['CustomAnimation'] = 103948800984170, --Your custom animation assetid; must be valid (return on MarketplaceService to check if valid or not), current nil
     ['CustomAnimationSpeed'] = 1, --Playback speed can be anything
 
     ['AuraRange'] = 250, --Range on how far will be the kill aura
 
+    ['SummonPrefix'] = "S", --Custom summon
+    ['VoidingPrefix'] = "V", --Custom voiding
+    ['AutoMod'] = true, --Auto mod to kick if mod is on server
     ['CrewID'] = 32570691, --Crew id, preferable to be in both same crew alt/main
-    ['VoidView'] = false, --Puts urs camera to void, gradually increasing ur fps
+    ['VoidView'] = true, --Puts urs camera to void, gradually increasing ur fps
     ['AntiStomp'] = true, --Self explainatory
     ['HideScreen'] = false, --Boost fps and lowered cpu consumption, recomended
     ['CustomPrefix'] = "!", --Bot prefix
