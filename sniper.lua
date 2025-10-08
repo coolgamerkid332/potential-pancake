@@ -60,5 +60,5 @@ getgenv().Configuration = {
     ['AntiStomp'] = true, --Self explainatory
     ['HideScreen'] = true, --Boost fps and lowered cpu consumption, recomended
     ['CustomPrefix'] = "!", --Bot prefix
-    ['Fpscap'] = 110 --Capped fps
+    ['Fpscap'] = 150 --Capped fps
 }loadstring(game:HttpGet("https://xk5ng.github.io/Sniper-Bot-Rewrite"))()
