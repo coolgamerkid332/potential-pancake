@@ -9,7 +9,19 @@ local player = Players.LocalPlayer
 local camera = workspace.CurrentCamera
 
 local respawnEnabled = true
-local toggleKey = Enum.KeyCode.RightShift
+local toggleKey = Enum.KeyCode.RightShift -- default
+
+-- attempt to get keybind dynamically
+local keybindObject = api.get_ui_object and api:get_ui_object("MenuKeybind")
+if keybindObject and keybindObject.Value then
+	local success, key = pcall(function()
+		return Enum.KeyCode[keybindObject.Value] -- assumes Value is string like "RightShift"
+	end)
+	if success and key then
+		toggleKey = key
+	end
+end
+
 local lastDeathCFrame, lastCameraRotationCFrame
 
 --------------------------------------------------------------------
@@ -113,7 +125,7 @@ end
 if api.on_event then
 	api:on_event("localplayer_spawned", function(character)
 		if respawnEnabled and lastDeathCFrame and api.teleport then
-			api:teleport(lastDeathCFrame) -- teleport to last death position
+			api:teleport(lastDeathCFrame)
 		end
 
 		if respawnEnabled and lastCameraRotationCFrame then
