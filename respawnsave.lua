@@ -22,7 +22,7 @@ screenGui.Parent = player:WaitForChild("PlayerGui")
 
 local frame = Instance.new("Frame")
 frame.Size = UDim2.new(0, 180, 0, 60)
-frame.Position = UDim2.new(0.5, -90, 0, 10) -- top center, slight padding from top
+frame.Position = UDim2.new(0.5, -90, 0, 10) -- top center
 frame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 frame.BorderSizePixel = 0
 frame.BackgroundTransparency = 0.2
@@ -84,7 +84,7 @@ UserInputService.InputBegan:Connect(function(input, gp)
 end)
 
 --------------------------------------------------------------------
--- death / respawn handling
+-- death handling
 --------------------------------------------------------------------
 local function onLocalPlayerDied()
 	local char = player.Character
@@ -97,7 +97,7 @@ local function onLocalPlayerDied()
 	end
 end
 
--- hook custom API if exists
+-- hook death event if available
 if api.on_event then
 	api:on_event("localplayer_died", onLocalPlayerDied)
 else
@@ -107,28 +107,19 @@ else
 	end)
 end
 
-player.CharacterAdded:Connect(function(character)
-	task.spawn(function()
-		task.wait(0.2)
-
+--------------------------------------------------------------------
+-- teleport + camera alignment on spawn
+--------------------------------------------------------------------
+if api.on_event then
+	api:on_event("localplayer_spawned", function(character)
 		if respawnEnabled and lastDeathCFrame and api.teleport then
-			api:teleport(lastDeathCFrame)
+			api:teleport(lastDeathCFrame) -- teleport to last death position
 		end
 
 		if respawnEnabled and lastCameraRotationCFrame then
 			camera.CameraType = Enum.CameraType.Scriptable
 			camera.CFrame = CFrame.new(camera.CFrame.Position, camera.CFrame.Position + lastCameraRotationCFrame.LookVector)
-			task.wait(0.3)
 			camera.CameraType = Enum.CameraType.Custom
 		end
 	end)
-end)
-
--- handle mid-game injection
-if player.Character then
-	local char = player.Character
-	local humanoid = char:FindFirstChildOfClass("Humanoid")
-	if humanoid then
-		humanoid.Died:Connect(onLocalPlayerDied)
-	end
 end
