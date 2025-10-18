@@ -22,7 +22,7 @@ screenGui.Parent = player:WaitForChild("PlayerGui")
 
 local frame = Instance.new("Frame")
 frame.Size = UDim2.new(0, 180, 0, 60)
-frame.Position = UDim2.new(0.5, -90, 0.75, 0)
+frame.Position = UDim2.new(0.5, -90, 0, 10) -- top center, slight padding from top
 frame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 frame.BorderSizePixel = 0
 frame.BackgroundTransparency = 0.2
@@ -112,7 +112,6 @@ player.CharacterAdded:Connect(function(character)
 		task.wait(0.2)
 
 		if respawnEnabled and lastDeathCFrame and api.teleport then
-			-- use api:teleport instead of directly setting CFrame
 			api:teleport(lastDeathCFrame)
 		end
 
