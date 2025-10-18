@@ -1,4 +1,7 @@
-local api = getfenv().api or {} -- allows compatibility with UE environment
+-- RespawnAtDeathPosition.lua
+-- StarterPlayerScripts or mid-game execution
+
+local api = getfenv().api or {}
 
 local Players = game:GetService("Players")
 local UserInputService = game:GetService("UserInputService")
@@ -6,8 +9,8 @@ local player = Players.LocalPlayer
 local camera = workspace.CurrentCamera
 
 local respawnEnabled = true
-local toggleKey = Enum.KeyCode.RightShift -- changeable keybind
-local lastDeathCFrame, lastCameraRotationCFrame
+local toggleKey = Enum.KeyCode.RightShift
+local lastDeathCFrame
 
 --------------------------------------------------------------------
 -- GUI setup
@@ -19,15 +22,14 @@ screenGui.Parent = player:WaitForChild("PlayerGui")
 
 local frame = Instance.new("Frame")
 frame.Size = UDim2.new(0, 180, 0, 60)
-frame.Position = UDim2.new(0.5, -90, 0.75, 0) -- moved upward
+frame.Position = UDim2.new(0.5, -90, 0.75, 0)
 frame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 frame.BorderSizePixel = 0
 frame.BackgroundTransparency = 0.2
 frame.Active = true
-frame.Draggable = true -- make GUI draggable
+frame.Draggable = true
 frame.Parent = screenGui
 
--- title label
 local title = Instance.new("TextLabel")
 title.Size = UDim2.new(1, -20, 0.5, 0)
 title.Position = UDim2.new(0, 20, 0, 0)
@@ -38,7 +40,6 @@ title.TextColor3 = Color3.fromRGB(0, 255, 0)
 title.TextScaled = true
 title.Parent = frame
 
--- toggle button
 local toggleButton = Instance.new("TextButton")
 toggleButton.Size = UDim2.new(1, -20, 0.5, 0)
 toggleButton.Position = UDim2.new(0, 20, 0.5, 0)
@@ -49,7 +50,6 @@ toggleButton.Font = Enum.Font.Gotham
 toggleButton.TextScaled = true
 toggleButton.Parent = frame
 
--- close button ("X")
 local closeButton = Instance.new("TextButton")
 closeButton.Size = UDim2.new(0, 20, 0, 20)
 closeButton.Position = UDim2.new(0, 0, 0, 0)
@@ -81,6 +81,19 @@ UserInputService.InputBegan:Connect(function(input, gp)
 end)
 
 --------------------------------------------------------------------
+-- camera follow without ever resetting rotation
+--------------------------------------------------------------------
+-- keep camera in Scriptable mode, follow HumanoidRootPart position every frame
+RunService.RenderStepped:Connect(function()
+	local char = player.Character
+	if char and char:FindFirstChild("HumanoidRootPart") then
+		local root = char.HumanoidRootPart
+		-- keep rotation constant, only move position
+		camera.CFrame = CFrame.new(root.Position, root.Position + camera.CFrame.LookVector)
+	end
+end)
+
+--------------------------------------------------------------------
 -- death / respawn handling
 --------------------------------------------------------------------
 local function onLocalPlayerDied()
@@ -89,16 +102,13 @@ local function onLocalPlayerDied()
 		local root = char:FindFirstChild("HumanoidRootPart")
 		if root then
 			lastDeathCFrame = root.CFrame
-			lastCameraRotationCFrame = CFrame.new(Vector3.new(0,0,0), (camera.CFrame.LookVector)) -- store rotation only
 		end
 	end
 end
 
--- hook custom API if exists
 if api.on_event then
 	api:on_event("localplayer_died", onLocalPlayerDied)
 else
-	-- fallback for normal Roblox environment
 	player.CharacterAdded:Connect(function(character)
 		local humanoid = character:WaitForChild("Humanoid")
 		humanoid.Died:Connect(onLocalPlayerDied)
@@ -107,24 +117,14 @@ end
 
 player.CharacterAdded:Connect(function(character)
 	task.spawn(function()
-		local root = character:WaitForChild("HumanoidRootPart")
 		task.wait(0.2)
-
-		if respawnEnabled and lastDeathCFrame then
-			root.CFrame = lastDeathCFrame -- teleport exactly where died
-		end
-
-		if respawnEnabled and lastCameraRotationCFrame then
-			-- preserve rotation
-			camera.CameraType = Enum.CameraType.Scriptable
-			camera.CFrame = CFrame.new(camera.CFrame.Position, camera.CFrame.Position + lastCameraRotationCFrame.LookVector)
-			task.wait(0.3)
-			camera.CameraType = Enum.CameraType.Custom
+		if respawnEnabled and lastDeathCFrame and api.teleport then
+			api:teleport(lastDeathCFrame)
 		end
 	end)
 end)
 
--- handle mid-game script insertion
+-- handle mid-game injection
 if player.Character then
 	local char = player.Character
 	local humanoid = char:FindFirstChildOfClass("Humanoid")
