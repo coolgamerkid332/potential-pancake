@@ -1,7 +1,7 @@
 -- RespawnAtDeathPosition.lua
--- StarterPlayerScripts or mid-game execution
+-- put in StarterPlayerScripts or run mid-game on client
 
-local api = getfenv().api or {}
+local api = getfenv().api or {} -- ensures api exists
 
 local Players = game:GetService("Players")
 local UserInputService = game:GetService("UserInputService")
@@ -10,7 +10,7 @@ local camera = workspace.CurrentCamera
 
 local respawnEnabled = true
 local toggleKey = Enum.KeyCode.RightShift
-local lastDeathCFrame
+local lastDeathCFrame, lastCameraRotationCFrame
 
 --------------------------------------------------------------------
 -- GUI setup
@@ -30,6 +30,7 @@ frame.Active = true
 frame.Draggable = true
 frame.Parent = screenGui
 
+-- title label
 local title = Instance.new("TextLabel")
 title.Size = UDim2.new(1, -20, 0.5, 0)
 title.Position = UDim2.new(0, 20, 0, 0)
@@ -40,6 +41,7 @@ title.TextColor3 = Color3.fromRGB(0, 255, 0)
 title.TextScaled = true
 title.Parent = frame
 
+-- toggle button
 local toggleButton = Instance.new("TextButton")
 toggleButton.Size = UDim2.new(1, -20, 0.5, 0)
 toggleButton.Position = UDim2.new(0, 20, 0.5, 0)
@@ -50,6 +52,7 @@ toggleButton.Font = Enum.Font.Gotham
 toggleButton.TextScaled = true
 toggleButton.Parent = frame
 
+-- close button
 local closeButton = Instance.new("TextButton")
 closeButton.Size = UDim2.new(0, 20, 0, 20)
 closeButton.Position = UDim2.new(0, 0, 0, 0)
@@ -81,19 +84,6 @@ UserInputService.InputBegan:Connect(function(input, gp)
 end)
 
 --------------------------------------------------------------------
--- camera follow without ever resetting rotation
---------------------------------------------------------------------
--- keep camera in Scriptable mode, follow HumanoidRootPart position every frame
-RunService.RenderStepped:Connect(function()
-	local char = player.Character
-	if char and char:FindFirstChild("HumanoidRootPart") then
-		local root = char.HumanoidRootPart
-		-- keep rotation constant, only move position
-		camera.CFrame = CFrame.new(root.Position, root.Position + camera.CFrame.LookVector)
-	end
-end)
-
---------------------------------------------------------------------
 -- death / respawn handling
 --------------------------------------------------------------------
 local function onLocalPlayerDied()
@@ -102,10 +92,12 @@ local function onLocalPlayerDied()
 		local root = char:FindFirstChild("HumanoidRootPart")
 		if root then
 			lastDeathCFrame = root.CFrame
+			lastCameraRotationCFrame = CFrame.new(Vector3.new(0,0,0), camera.CFrame.LookVector)
 		end
 	end
 end
 
+-- hook custom API if exists
 if api.on_event then
 	api:on_event("localplayer_died", onLocalPlayerDied)
 else
@@ -118,8 +110,17 @@ end
 player.CharacterAdded:Connect(function(character)
 	task.spawn(function()
 		task.wait(0.2)
+
 		if respawnEnabled and lastDeathCFrame and api.teleport then
+			-- use api:teleport instead of directly setting CFrame
 			api:teleport(lastDeathCFrame)
+		end
+
+		if respawnEnabled and lastCameraRotationCFrame then
+			camera.CameraType = Enum.CameraType.Scriptable
+			camera.CFrame = CFrame.new(camera.CFrame.Position, camera.CFrame.Position + lastCameraRotationCFrame.LookVector)
+			task.wait(0.3)
+			camera.CameraType = Enum.CameraType.Custom
 		end
 	end)
 end)
