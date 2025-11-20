@@ -3,7 +3,6 @@ script_key="eZwIKHakTEHWnQKaQgfFoVAWxCADIBwR";
 getgenv().whitelisted = { 'XxFlameChaosxX2008' } 
 
 -- Add modifications here 
-getgenv().gunlist = {"Rifle", "Flintlock"}
 getgenv().AntiFling = true
 getgenv().OGReignDances = true
 getgenv().FP = false
